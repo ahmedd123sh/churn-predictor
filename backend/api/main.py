@@ -78,18 +78,18 @@ def predict_one(features: dict, bundle: dict) -> dict:
     }
 
 
-@app.get("/")
+@app.get("/api/main")
 def root():
     return {"status": "ok", "service": "telecom-churn-predictor"}
 
 
-@app.get("/health")
+@app.get("/api/main/health")
 def health():
     bundle = get_bundle()
     return {"status": "healthy", "model_version": bundle.get("model_version", "unknown")}
 
 
-@app.post("/predict", response_model=PredictionResponse)
+@app.post("/api/main/predict", response_model=PredictionResponse)
 def predict(features: CustomerFeatures):
     try:
         bundle = get_bundle()
