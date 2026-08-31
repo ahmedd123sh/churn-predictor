@@ -1,15 +1,3 @@
-"""
-Trains the churn model exactly as in Starter_Notebook.ipynb, with one fix:
-monthly_charges is properly cleaned to numeric (the notebook left it as text,
-which caused it to be one-hot encoded as a near-unique category per row).
-
-Everything else replicates the notebook's actual behavior, including the fact
-that categorical cleaning uses .str.title() only (so e.g. "M"/"F"/"MTM" remain
-distinct from "Male"/"Female"/"Month-To-Month" -- this matches what the
-notebook's fairness audit actually showed, so we keep it for fidelity).
-
-Run: python train.py --csv /path/to/telecom_churn.csv --out ../model/churn_pipeline.joblib
-"""
 import argparse
 import numpy as np
 import pandas as pd
