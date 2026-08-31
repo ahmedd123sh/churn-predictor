@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pulse — churn prediction</title>
+<title>Pulse - Telecom Churn</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
@@ -269,7 +269,7 @@
 <div class="wrap">
   <header>
     <h1 class="wordmark">Pulse<span>.</span></h1>
-    <p>Predict customer churn risk from account and usage data.</p>
+    <p>Predict telecom customer churn risk from account and usage data.</p>
   </header>
 
   <div class="layout">
@@ -375,7 +375,7 @@
         </div>
 
         <div class="submit-row">
-          <button type="submit" id="submit-btn">Predict churn risk</button>
+          <button type="submit" id="submit-btn">Read signal</button>
           <div class="form-error" id="form-error">Couldn't reach the prediction service. Check the connection and try again.</div>
         </div>
       </form>
@@ -383,7 +383,7 @@
 
     <div class="panel result-panel">
       <div class="result-empty" id="result-empty">
-        Results appear here.
+        Fill in the form and read the signal to see a forecast here.
       </div>
       <div class="result-body" id="result-body">
         <p class="result-label">Churn probability</p>
@@ -400,9 +400,8 @@
 
 <script>
   // Update this once your backend is deployed on Render, e.g.
-  // Replace this with your deployed backend's Vercel URL (Step 3 below),
-  // then redeploy the frontend.
-  const API_BASE_URL = "https://REPLACE-WITH-YOUR-BACKEND-URL.vercel.app";
+  // const API_BASE_URL = "https://your-churn-api.onrender.com";
+  const API_BASE_URL = "https://churn-predictor-brown.vercel.app";
 
   const form = document.getElementById('churn-form');
   const submitBtn = document.getElementById('submit-btn');
@@ -489,7 +488,7 @@
     };
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span class="loading-dot"></span>Predicting…';
+    submitBtn.innerHTML = '<span class="loading-dot"></span>Reading…';
 
     try {
       const res = await fetch(`${API_BASE_URL}/api/main/predict`, {
@@ -530,7 +529,7 @@
       formError.style.display = 'block';
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Predict churn risk';
+      submitBtn.textContent = 'Read signal';
     }
   });
 </script>
