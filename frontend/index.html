@@ -491,7 +491,7 @@
     submitBtn.innerHTML = '<span class="loading-dot"></span>Reading…';
 
     try {
-      const res = await fetch(`${API_BASE_URL}/predict`, {
+      const res = await fetch(`${API_BASE_URL}/api/main/predict`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
